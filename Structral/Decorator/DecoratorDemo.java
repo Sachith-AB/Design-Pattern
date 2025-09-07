@@ -75,6 +75,21 @@ class CreamDecorator extends CoffeeDecorator {
     }
 }
 
+class CaramelDecorator extends CoffeeDecorator {
+    public CaramelDecorator(Coffee coffee) {
+        super(coffee);
+    }
+
+    @Override
+    public String getDescription() {
+        return decoratedCoffee.getDescription() + ", Caramel";
+    }
+    @Override
+    public Float getCost() {
+        return decoratedCoffee.getCost() + 20.0f;
+    }
+}
+
 public class DecoratorDemo {
 
     public static void main(String[] args) {
@@ -89,5 +104,9 @@ public class DecoratorDemo {
 
         Coffee deluxe = new CreamDecorator(new SugarDecorator(new MilkDecorator(new BasicCoffee())));
         System.out.println(deluxe.getDescription() + " -> " + deluxe.getCost());
+
+        Coffee Caramel = new CaramelDecorator(new SugarDecorator(new MilkDecorator(new BasicCoffee())));
+        System.out.println(Caramel.getDescription() + " -> " + Caramel.getCost());
+
     }
 }
