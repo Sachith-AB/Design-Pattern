@@ -25,6 +25,14 @@ class CryptoPayment implements Payment {
     }
 }
 
+class PaypalPayment implements Payment {
+    @Override
+    public void pay(int amount) {
+        System.out.println("Paid " + amount + " in Paypal");
+
+    }
+}
+
 class PaymentFactory {
     public static Payment getPaymentMethod(String type) {
         switch (type.toLowerCase()) {
@@ -34,6 +42,8 @@ class PaymentFactory {
                 return new UpayPayment();
             case "crypto":
                 return new CryptoPayment();
+            case "paypal":
+                return new PaypalPayment();
             default:
                 throw new IllegalArgumentException("Unknown payment method: " + type);
         }
@@ -52,6 +62,9 @@ public class FactoryDemo {
 
         Payment p3 = PaymentFactory.getPaymentMethod("crypto");
         p3.pay(5000);
+
+        Payment p4 = PaymentFactory.getPaymentMethod("paypal");
+        p4.pay(2459);
     }
 }
 
