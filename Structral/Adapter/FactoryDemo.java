@@ -49,7 +49,8 @@ public class FactoryDemo {
         MediaPlayer player = new MediaAdapter();
 
         player.play("mp3", "song1.mp3");
-        player.play("mp4", "video1.vlc");
+        player.play("mp4", "video1.mp4");
+        player.play("mp4", "videoVlc.vlc");
         player.play("avi", "movie.avi");
     }
 }
